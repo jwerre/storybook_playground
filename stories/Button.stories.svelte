@@ -1,29 +1,31 @@
 <script>
-  import { Meta, Story, Template } from '@storybook/addon-svelte-csf';
-  import Button from './Button.svelte';
-  import { action } from '@storybook/addon-actions';
-  let count = 0;
-  function handleClick() {
-    count += 1;
-    return action('clickity clackity')();
-  }
+	import { Meta, Story, Template } from '@storybook/addon-svelte-csf';
+	import { userEvent, within } from '@storybook/testing-library';
+	import { expect } from '@storybook/jest';
+	import Button from './Button.svelte';
+	import { action } from '@storybook/addon-actions';
+	let count = 0;
+	function handleClick() {
+		count += 1;
+		return action('clickity clackity')();
+	}
+
+	const tests =  {
+		default:async (args) => {
+			const canvas = within(args.canvasElement);
+			const button = canvas.getByRole('button')
+			expect(button).toBeInTheDocument();
+		}
+	};
+
 </script>
 
-<Meta title="Button" component={Button}/>
+<Meta title="Svelte CSF/Button" component={Button}/>
 
 <Template let:args>
-  <Button {...args} on:click={handleClick}>
-    You clicked: {count}
-  </Button>
+	<Button {...args} on:click={handleClick}>
+		You clicked: {count}
+	</Button>
 </Template>
 
-<Story name="Button"/>
-
-<Story name="Rounded" args={{rounded: true}}/>
-
-<Story name="Square" source args={{rounded: false}}/>
-
-<!-- Dynamic snippet should be disabled for this story -->
-<Story name="Button No Args">
-  <Button>Label</Button>
-</Story>
+<Story name="Button" play={tests.default}/>
