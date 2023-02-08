@@ -1,0 +1,29 @@
+{
+  "name": "storybook_playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.0-beta.25",
+    "@storybook/addon-interactions": "^7.0.0-beta.25",
+    "@storybook/addon-links": "^7.0.0-beta.25",
+    "@storybook/addon-svelte-csf": "^3.0.0-next.3",
+    "@storybook/blocks": "^7.0.0-beta.25",
+    "@storybook/svelte": "^7.0.0-beta.25",
+    "@storybook/svelte-webpack5": "^7.0.0-beta.25",
+    "@storybook/testing-library": "^0.0.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.0.0-beta.25",
+    "svelte": "^3.55.1",
+    "svelte-loader": "^3.1.4"
+  }
+}
